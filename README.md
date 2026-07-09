@@ -1,6 +1,6 @@
 # Summit Arena — Static Archive
 
-[Summit Arena FBLA - Accompanying Presentation](Web Design 24-25_AveryBehring.pptx)
+[Summit Arena FBLA - Accompanying Presentation][Web Design 24-25_AveryBehring.pptx]
 
 A static, browsable snapshot of the Summit Arena website — an event venue project (Heath, OH) originally built on WordPress with the Divi theme, The Events Calendar, and Event Tickets.
 
