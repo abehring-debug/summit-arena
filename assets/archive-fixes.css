@@ -15,18 +15,48 @@
   opacity: 1;
 }
 
-/* Theme Builder header: the desktop nav sits on a dark hero image at rest and
- * on a navy bar once sticky, so both states need light links. Scoped to
- * ul.et-menu so it leaves the mobile drawer — which turns white when the
- * header is stuck — to the colours the inline CSS already gives it. */
-.et_pb_menu_0_tb_header.et_pb_menu ul.et-menu > li > a,
-.et_pb_menu_1_tb_header.et_pb_menu ul.et-menu > li > a {
-  color: #ffffff;
+/* Theme Builder header: the homepage's copy of the dynamic CSS lost the menu
+ * module's styling, so its nav rendered in a fallback face at the wrong size
+ * and in near-black on the dark hero. These are the declarations every other
+ * page still carries inline, restored verbatim; on those pages their own
+ * inline copy comes later and simply wins with the same values. */
+.et_pb_menu_0_tb_header.et_pb_menu ul li a {
+  font-family: 'Oswald', Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #efefef !important;
 }
 
-.et_pb_menu_0_tb_header.et_pb_menu ul.et-menu > li > a:hover,
-.et_pb_menu_1_tb_header.et_pb_menu ul.et-menu > li > a:hover {
+.et_pb_sticky .et_pb_menu_0_tb_header.et_pb_menu ul li a,
+.et_pb_sticky .et_pb_text_0_tb_header.et_pb_text {
+  color: #FFFFFF !important;
+}
+
+.et_pb_menu_0_tb_header {
+  padding-right: 0px;
+  margin-right: -160px !important;
+  width: 111.9%;
+}
+
+.et_pb_menu_0_tb_header,
+.et_pb_menu_1_tb_header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.et_pb_menu_0_tb_header.et_pb_menu ul.et-menu > li > a:hover {
   opacity: 0.7;
+}
+
+/* The header row is an absolutely positioned overlay, so each hero reserves
+ * room for it with its own top padding. The homepage lost that declaration
+ * along with the rest of its dynamic CSS and fell back to Divi's 54px, which
+ * let the gold tagline ride up into the nav. 8vw is what the sibling heroes
+ * use. */
+body.home .et_pb_section_0.et_pb_section {
+  padding-top: 8vw;
+  padding-bottom: 8vw;
 }
 
 /* Between the 981px desktop-nav breakpoint and roughly 1100px the header CTA
@@ -34,6 +64,35 @@
  * button's height. */
 .et_pb_text_0_tb_header .et_pb_text_inner p {
   white-space: nowrap;
+}
+
+/* Coverflow slider: the module pins its caption with a fixed 200px top
+ * margin, which assumed the taller slides of the original layout. At the
+ * sizes these slides render, that pushes the heading and copy out of the
+ * image and onto the page behind it. Anchor the caption to the bottom of
+ * the slide instead, and keep it clipped to the image. */
+.dnxte_coverflowslider_parent_0 .dnxte-coverflow-multitext.dnxte-coverflow-inside-image {
+  justify-content: flex-end;
+  overflow: hidden;
+  /* the module's overlay layers sit at 9999, so the caption has to clear
+   * them or it renders underneath the scrim */
+  z-index: 10000;
+}
+
+.dnxte_coverflowslider_parent_0 .dnxte-coverflow-heading {
+  margin-top: 0 !important;
+}
+
+/* The module colours the caption paragraph #f4f4f4 for legibility over the
+ * photo but leaves the heading at its dark default. */
+.dnxte_coverflowslider_parent_0 .dnxte-coverflow-heading {
+  color: #f4f4f4;
+}
+
+/* Nothing darkens the image at rest, so the caption sits on raw photo.
+ * A scrim behind the lower half keeps both lines readable. */
+.dnxte_coverflowslider_parent_0 .dnxte-coverflow-overlay-color {
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.75) 100%);
 }
 
 /* Pricing tables: the amount renders at 70px but inherits the module's
