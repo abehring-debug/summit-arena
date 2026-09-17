@@ -29,6 +29,13 @@
   opacity: 0.7;
 }
 
+/* Between the 981px desktop-nav breakpoint and roughly 1100px the header CTA
+ * is narrow enough to break "BUY TICKETS" across two lines, which doubles the
+ * button's height. */
+.et_pb_text_0_tb_header .et_pb_text_inner p {
+  white-space: nowrap;
+}
+
 /* Pricing tables: the amount renders at 70px but inherits the module's
  * 23.8px line-height, so it overlaps the package title above it. */
 .et_pb_pricing_table .et_pb_et_price {
